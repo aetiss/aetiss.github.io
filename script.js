@@ -18,5 +18,21 @@ fetch(`https://api.github.com/users/${githubUsername}`)
         bioElem.textContent = data.bio || '';
       }
     });
-  })
-  .catch(err => console.error('GitHub fetch failed', err));
+    })
+    .catch(err => console.error('GitHub fetch failed', err));
+
+const themeToggle = document.getElementById('theme-toggle');
+if (themeToggle) {
+  const storedTheme = localStorage.getItem('theme');
+  if (storedTheme) {
+    document.documentElement.setAttribute('data-theme', storedTheme);
+    themeToggle.textContent = storedTheme === 'dark' ? '☀' : '🌙';
+  }
+  themeToggle.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    themeToggle.textContent = newTheme === 'dark' ? '☀' : '🌙';
+    localStorage.setItem('theme', newTheme);
+  });
+}
