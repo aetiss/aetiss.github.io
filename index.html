@@ -1,58 +1,83 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Atish Mishra - Portfolio</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header>
-    <nav>
-      <h1 class="logo">ATISH</h1>
-      <ul class="nav-links">
-        <li><a href="#merch">Merch</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#media">Music & Photos</a></li>
-        <li><a href="#games">Games</a></li>
-      </ul>
-      <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
-    </nav>
-    <section class="hero">
-      <img id="avatar" src="https://via.placeholder.com/150" alt="Profile photo">
-      <div class="hero-text">
-        <h2 id="name"></h2>
-        <p id="bio"></p>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Portfolio of Atish Mishra" />
+    <title>Atish Mishra</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <nav>
+          <a href="#" class="logo">ATISH</a>
+          <ul class="nav">
+            <li><a href="#merch">Merch</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#media">Media</a></li>
+            <li><a href="#games">Games</a></li>
+            <li>
+              <button id="theme-toggle" aria-label="Toggle dark mode">
+                🌙
+              </button>
+            </li>
+          </ul>
+        </nav>
       </div>
-    </section>
-  </header>
+    </header>
 
-  <main>
-    <section id="merch" class="panel">
-      <h2>Merch</h2>
-      <p>Unique designs and goods are on the way.</p>
-    </section>
+    <main>
+      <section class="hero">
+        <div class="container">
+          <img
+            id="avatar"
+            class="avatar"
+            src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+            alt="Profile photo"
+            width="160"
+            height="160"
+          />
+          <h1 id="name"></h1>
+          <p id="bio"></p>
+        </div>
+      </section>
 
-    <section id="projects" class="panel">
-      <h2>Projects</h2>
-      <p>A collection of things I'm building and exploring.</p>
-    </section>
+      <section id="merch" class="panel">
+        <div class="container">
+          <h2>Merch</h2>
+          <p>Unique designs and goods are on the way.</p>
+        </div>
+      </section>
 
-    <section id="media" class="panel">
-      <h2>Music & Photographs</h2>
-      <p>Snapshots and sounds that inspire me.</p>
-    </section>
+      <section id="projects" class="panel">
+        <div class="container">
+          <h2>Projects</h2>
+          <p>A collection of things I'm building and exploring.</p>
+        </div>
+      </section>
 
-    <section id="games" class="panel">
-      <h2>Games</h2>
-      <p>Personal games under development.</p>
-    </section>
-  </main>
+      <section id="media" class="panel">
+        <div class="container">
+          <h2>Music &amp; Photographs</h2>
+          <p>Snapshots and sounds that inspire me.</p>
+        </div>
+      </section>
 
-  <footer>
-    <p>© 2024 Atish Mishra</p>
-  </footer>
+      <section id="games" class="panel">
+        <div class="container">
+          <h2>Games</h2>
+          <p>Personal games under development.</p>
+        </div>
+      </section>
+    </main>
 
-  <script src="script.js"></script>
-</body>
+    <footer class="site-footer">
+      <div class="container">
+        <p>© 2024 Atish Mishra</p>
+      </div>
+    </footer>
+
+    <script defer src="script.js"></script>
+  </body>
 </html>

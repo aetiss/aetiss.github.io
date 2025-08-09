@@ -1,38 +1,34 @@
-const githubUsername = 'aetiss';
-fetch(`https://api.github.com/users/${githubUsername}`)
-  .then(response => response.json())
-  .then(data => {
-    document.getElementById('avatar').src = data.avatar_url;
-    document.getElementById('name').textContent = data.name || data.login;
-    document.addEventListener('DOMContentLoaded', function() {
-      var avatarElem = document.getElementById('avatar');
-      if (avatarElem) {
-        avatarElem.src = data.avatar_url;
-      }
-      var nameElem = document.getElementById('name');
-      if (nameElem) {
-        nameElem.textContent = data.name || data.login;
-      }
-      var bioElem = document.getElementById('bio');
-      if (bioElem) {
-        bioElem.textContent = data.bio || '';
-      }
-    });
-    })
-    .catch(err => console.error('GitHub fetch failed', err));
-
-const themeToggle = document.getElementById('theme-toggle');
-if (themeToggle) {
-  const storedTheme = localStorage.getItem('theme');
-  if (storedTheme) {
-    document.documentElement.setAttribute('data-theme', storedTheme);
-    themeToggle.textContent = storedTheme === 'dark' ? '☀' : '🌙';
+(async () => {
+  const username = "aetiss";
+  try {
+    const res = await fetch(`https://api.github.com/users/${username}`);
+    if (!res.ok) {
+      throw new Error(`GitHub API request failed: ${res.status} ${res.statusText}`);
+    }
+    const data = await res.json();
+    const avatar = document.getElementById("avatar");
+    const nameEl = document.getElementById("name");
+    const bioEl = document.getElementById("bio");
+    if (avatar) avatar.src = data.avatar_url;
+    if (nameEl) nameEl.textContent = data.name || data.login;
+    if (bioEl) bioEl.textContent = data.bio || "";
+  } catch (err) {
+    console.error("GitHub fetch failed", err);
   }
-  themeToggle.addEventListener('click', () => {
-    const currentTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', newTheme);
-    themeToggle.textContent = newTheme === 'dark' ? '☀' : '🌙';
-    localStorage.setItem('theme', newTheme);
+})();
+
+const toggle = document.getElementById("theme-toggle");
+if (toggle) {
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const stored = localStorage.getItem("theme");
+  const theme = stored || (prefersDark ? "dark" : "light");
+  document.documentElement.setAttribute("data-theme", theme);
+  toggle.textContent = theme === "dark" ? "☀️" : "🌙";
+  toggle.addEventListener("click", () => {
+    const current = document.documentElement.getAttribute("data-theme");
+    const next = current === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", next);
+    toggle.textContent = next === "dark" ? "☀️" : "🌙";
+    localStorage.setItem("theme", next);
   });
 }
