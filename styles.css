@@ -1,0 +1,122 @@
+:root {
+  --bg-color: #ffffff;
+  --text-color: #111111;
+  --accent-red: #ff1a1a;
+  --accent-blue: #0055ff;
+  --accent-yellow: #ffc800;
+  --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: var(--bg-color);
+  border-bottom: 4px solid var(--text-color);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.nav a {
+  margin-left: 1rem;
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.nav a:hover {
+  color: var(--accent-blue);
+}
+
+.hero {
+  padding: 4rem 2rem;
+  text-align: center;
+  background: var(--text-color);
+  color: #ffffff;
+}
+
+.hero .avatar {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 6px solid var(--accent-yellow);
+  margin-bottom: 1rem;
+}
+
+.section {
+  padding: 4rem 2rem;
+}
+
+.section h2 {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  border-left: 8px solid var(--accent-red);
+  padding-left: 1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  padding: 2rem;
+  border: 2px solid var(--text-color);
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.placeholder {
+  background: var(--accent-blue);
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.project-list {
+  list-style: none;
+  padding: 0;
+}
+
+.project-list li {
+  margin-bottom: 0.5rem;
+}
+
+.project-list a {
+  color: var(--accent-blue);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.project-list a:hover {
+  text-decoration: underline;
+}
+
+.site-footer {
+  text-align: center;
+  padding: 2rem;
+  border-top: 4px solid var(--text-color);
+  background: var(--bg-color);
+}
