@@ -2,6 +2,9 @@
   const username = "aetiss";
   try {
     const res = await fetch(`https://api.github.com/users/${username}`);
+    if (!res.ok) {
+      throw new Error(`GitHub API request failed: ${res.status} ${res.statusText}`);
+    }
     const data = await res.json();
     const avatar = document.getElementById("avatar");
     const nameEl = document.getElementById("name");
