@@ -1,17 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atish Mishra</title>
-    <script src="https://unpkg.com/htmx.org"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atish Mishra - Portfolio</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <div id="profile">
-        <a href="profile.html" hx-get="profile.html" hx-trigger="click" hx-target="#profile" hx-swap="outerHTML" hx-select="#profile">Profile</a>
-    </div>
-</body>
+  <header>
+    <nav>
+      <h1 class="logo">ATISH</h1>
+      <ul class="nav-links">
+        <li><a href="#merch">Merch</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#media">Music & Photos</a></li>
+        <li><a href="#games">Games</a></li>
+      </ul>
+    </nav>
+    <section class="hero">
+      <img id="avatar" alt="Profile photo">
+      <div class="hero-text">
+        <h2 id="name"></h2>
+        <p id="bio"></p>
+      </div>
+    </section>
+  </header>
 
+  <main>
+    <section id="merch" class="panel">
+      <h2>Merch</h2>
+      <p>Unique designs and goods are on the way.</p>
+    </section>
+
+    <section id="projects" class="panel">
+      <h2>Projects</h2>
+      <p>A collection of things I'm building and exploring.</p>
+    </section>
+
+    <section id="media" class="panel">
+      <h2>Music & Photographs</h2>
+      <p>Snapshots and sounds that inspire me.</p>
+    </section>
+
+    <section id="games" class="panel">
+      <h2>Games</h2>
+      <p>Personal games under development.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2024 Atish Mishra</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
 </html>
