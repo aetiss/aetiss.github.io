@@ -1,4 +1,5 @@
-fetch('https://api.github.com/users/aetiss')
+const githubUsername = 'aetiss';
+fetch(`https://api.github.com/users/${githubUsername}`)
   .then(response => response.json())
   .then(data => {
     document.getElementById('avatar').src = data.avatar_url;
