@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello World - C/WebAssembly</title>
+    <style>
+        body {
+            font-family: monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: #1a1a2e;
+            color: #0f0;
+        }
+        #output {
+            font-size: 2rem;
+            white-space: pre;
+        }
+    </style>
+</head>
+<body>
+    <div id="output"></div>
+    <script>
+        var Module = {
+            print: function(text) {
+                document.getElementById('output').textContent += text + '\n';
+            },
+            printErr: function(text) {
+                console.error(text);
+            }
+        };
+    </script>
+    <script src="hello.js"></script>
+</body>
+</html>
