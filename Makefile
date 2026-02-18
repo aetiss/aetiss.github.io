@@ -4,7 +4,7 @@
 
 EMCC = emcc
 
-# ─── Blog flags (no SDL2, DOM manipulation via EM_JS) ───────────
+# ─── Blog flags (no SDL, DOM manipulation via EM_JS) ────────────
 BLOG_FLAGS = \
     -O2 \
     -sMODULARIZE=1 \
@@ -13,10 +13,10 @@ BLOG_FLAGS = \
     -sEXPORTED_RUNTIME_METHODS=UTF8ToString,stringToUTF8,lengthBytesUTF8 \
     -sALLOW_MEMORY_GROWTH=1
 
-# ─── Game flags (SDL2, canvas rendering) ────────────────────────
+# ─── Game flags (SDL3, canvas rendering) ────────────────────────
 GAME_FLAGS = \
     -O2 \
-    -sUSE_SDL=2 \
+    -sUSE_SDL=3 \
     -sMODULARIZE=1 \
     -sALLOW_MEMORY_GROWTH=1
 
