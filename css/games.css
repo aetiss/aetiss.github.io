@@ -1,0 +1,220 @@
+/* ─── Games Page ────────────────────────────────────────────── */
+.games-hero {
+  text-align: center;
+  padding: 4rem 1.5rem 2rem;
+}
+.games-hero h1 {
+  font-family: var(--mono);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--fg);
+  margin-bottom: 0.5rem;
+}
+.games-hero p {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* ─── Game Grid ──────────────────────────────────────────────── */
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 6rem;
+}
+
+.game-card {
+  background: var(--card-bg);
+  border: 1px solid var(--nav-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
+  cursor: pointer;
+}
+.game-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  box-shadow: 0 0 20px rgba(255,107,53,0.12);
+}
+
+/* Pixel art preview panels */
+.game-preview {
+  height: 140px;
+  position: relative;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+
+/* Scanline effect overlay */
+.game-preview::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.18) 2px,
+    rgba(0,0,0,0.18) 4px
+  );
+  pointer-events: none;
+}
+
+/* Snake preview */
+.snake-preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.snake-preview::before {
+  content: '🐍';
+  font-size: 3.5rem;
+  filter: drop-shadow(0 0 12px #0f0);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Breakout preview */
+.breakout-preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.breakout-preview::before {
+  content: '🧱';
+  font-size: 3.5rem;
+  filter: drop-shadow(0 0 12px #f0a);
+  animation: pulse 2.2s ease-in-out infinite;
+}
+
+/* Blocks preview */
+.blocks-preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.blocks-preview::before {
+  content: '🟦';
+  font-size: 3.5rem;
+  filter: drop-shadow(0 0 12px #0af);
+  animation: pulse 1.8s ease-in-out infinite;
+}
+
+/* Maze preview */
+.maze-preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.maze-preview::before {
+  content: '🏛️';
+  font-size: 3.5rem;
+  filter: drop-shadow(0 0 12px #fa0);
+  animation: pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.08); }
+}
+
+.game-card-body {
+  padding: 1rem 1.25rem 1.25rem;
+}
+
+.game-card-body h2 {
+  font-family: var(--mono);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+  color: var(--fg);
+}
+
+.game-card-body p {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.play-btn {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 0.4rem 1rem;
+  border: 1px solid var(--accent);
+  border-radius: 3px;
+  color: var(--accent);
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+.play-btn:hover {
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+}
+
+/* ─── Individual Game Page ───────────────────────────────────── */
+.game-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1.5rem 4rem;
+}
+
+.game-page h1 {
+  font-family: var(--mono);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.game-page .back-link {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+  display: block;
+  text-decoration: none;
+}
+.game-page .back-link:hover { color: var(--accent); }
+
+.canvas-wrapper {
+  position: relative;
+  border: 2px solid var(--nav-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(0,0,0,0.4);
+}
+.canvas-wrapper canvas {
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.game-controls {
+  margin-top: 1rem;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.8;
+}
+
+kbd {
+  display: inline-block;
+  padding: 0.1em 0.4em;
+  background: var(--card-bg);
+  border: 1px solid var(--nav-border);
+  border-radius: 3px;
+  font-family: var(--mono);
+  font-size: 0.85em;
+}

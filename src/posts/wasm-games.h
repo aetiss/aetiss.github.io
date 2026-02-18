@@ -1,0 +1,43 @@
+{
+    .slug    = "wasm-games",
+    .title   = "Writing Retro Games in C for the Browser",
+    .date    = "2026-02-18",
+    .excerpt = "SDL2 + Emscripten + WebAssembly = retro games that run everywhere.",
+    .content =
+        "## SDL2 in the Browser\n\n"
+        "Emscripten ships a port of SDL2 that compiles your C graphics code to run on "
+        "an HTML5 `<canvas>` element. The API is identical to desktop SDL2. You write "
+        "`SDL_RenderDrawRect`, it draws a rectangle. In the browser.\n\n"
+        "## The Game Loop Problem\n\n"
+        "The single most important thing to understand about games in WebAssembly: "
+        "you **cannot** use `while(1)` for your game loop. The browser's JavaScript "
+        "event loop doesn't cooperate with a blocking loop in WASM.\n\n"
+        "The solution is `emscripten_set_main_loop`:\n\n"
+        "```c\n"
+        "static void main_loop(void) {\n"
+        "    handle_input();\n"
+        "    update();\n"
+        "    render();\n"
+        "}\n\n"
+        "int main(void) {\n"
+        "    SDL_Init(SDL_INIT_VIDEO);\n"
+        "    // setup...\n"
+        "    emscripten_set_main_loop(main_loop, 0, 1);\n"
+        "    // 0 = use requestAnimationFrame\n"
+        "    // 1 = simulate infinite loop\n"
+        "}\n"
+        "```\n\n"
+        "Emscripten replaces the call with `requestAnimationFrame` under the hood. "
+        "Your game runs at 60fps, synced to the browser's render cycle.\n\n"
+        "## Keyboard Input\n\n"
+        "SDL2's event system works normally. `SDL_PollEvent` in `handle_input()` catches "
+        "keydown/keyup events. The canvas needs `tabindex=\"0\"` and an explicit `.focus()` "
+        "call so the browser sends keyboard events to it.\n\n"
+        "## What's on This Site\n\n"
+        "- **Snake** — classic grid-based snake, 400x400 canvas\n"
+        "- **Breakout** — paddle, ball, brick collision\n"
+        "- **Blocks** — falling tetrominoes, line clearing\n"
+        "- **Maze** — Wolfenstein-style 3D raycaster, DDA algorithm\n\n"
+        "All written in C. All compiled with `emcc -sUSE_SDL=2`. All running in your browser "
+        "right now as WebAssembly."
+},

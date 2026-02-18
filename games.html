@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Games — aetiss</title>
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/games.css">
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="index.html" class="nav-logo">aetiss</a>
+    <div class="nav-links">
+      <a href="blog.html">Blog</a>
+      <a href="games.html" class="active">Games</a>
+      <button id="theme-toggle" aria-label="Toggle theme">☀️</button>
+    </div>
+  </nav>
+
+  <div class="games-hero">
+    <h1>// GAMES</h1>
+    <p>Mini retro games — all written in C, compiled to WebAssembly.</p>
+  </div>
+
+  <div class="games-grid">
+    <div class="game-card">
+      <div class="game-preview snake-preview"></div>
+      <div class="game-card-body">
+        <h2>Snake</h2>
+        <p>Classic snake. Eat food, grow longer, don't crash into yourself.</p>
+        <a href="games/snake.html" class="play-btn">▶ PLAY</a>
+      </div>
+    </div>
+
+    <div class="game-card">
+      <div class="game-preview breakout-preview"></div>
+      <div class="game-card-body">
+        <h2>Breakout</h2>
+        <p>Bounce the ball, smash all the bricks. Don't let it fall.</p>
+        <a href="games/breakout.html" class="play-btn">▶ PLAY</a>
+      </div>
+    </div>
+
+    <div class="game-card">
+      <div class="game-preview blocks-preview"></div>
+      <div class="game-card-body">
+        <h2>Blocks</h2>
+        <p>Falling tetromino blocks. Fill rows, don't top out.</p>
+        <a href="games/blocks.html" class="play-btn">▶ PLAY</a>
+      </div>
+    </div>
+
+    <div class="game-card">
+      <div class="game-preview maze-preview"></div>
+      <div class="game-card-body">
+        <h2>Maze</h2>
+        <p>3D raycasting maze explorer. Navigate the dungeon. WASD to move.</p>
+        <a href="games/maze.html" class="play-btn">▶ PLAY</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      var stored = localStorage.getItem('theme');
+      var dark = stored ? stored === 'dark'
+        : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+      var btn = document.getElementById('theme-toggle');
+      btn.textContent = dark ? '☀️' : '🌙';
+      btn.addEventListener('click', function() {
+        var isDark = document.documentElement.dataset.theme === 'dark';
+        document.documentElement.dataset.theme = isDark ? 'light' : 'dark';
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+        btn.textContent = isDark ? '🌙' : '☀️';
+      });
+    })();
+  </script>
+</body>
+</html>

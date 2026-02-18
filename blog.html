@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog — aetiss</title>
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/blog.css">
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="index.html" class="nav-logo">aetiss</a>
+    <div class="nav-links">
+      <a href="blog.html" class="active">Blog</a>
+      <a href="games.html">Games</a>
+      <button id="theme-toggle" aria-label="Toggle theme">☀️</button>
+    </div>
+  </nav>
+
+  <main id="blog-content">
+    <div class="blog-loading">loading blog engine</div>
+  </main>
+
+  <script>
+    (function() {
+      var stored = localStorage.getItem('theme');
+      var dark = stored ? stored === 'dark'
+        : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+      var btn = document.getElementById('theme-toggle');
+      btn.textContent = dark ? '☀️' : '🌙';
+      btn.addEventListener('click', function() {
+        var isDark = document.documentElement.dataset.theme === 'dark';
+        document.documentElement.dataset.theme = isDark ? 'light' : 'dark';
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+        btn.textContent = isDark ? '🌙' : '☀️';
+      });
+    })();
+  </script>
+
+  <script src="build/blog.js"></script>
+  <script>
+    createBlog().then(function(Module) {
+      // blog_route() already called in C main()
+      // re-route on hash change is registered in C too
+    });
+  </script>
+</body>
+</html>

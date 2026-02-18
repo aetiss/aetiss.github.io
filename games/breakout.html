@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Breakout — aetiss</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/games.css">
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="../index.html" class="nav-logo">aetiss</a>
+    <div class="nav-links">
+      <a href="../blog.html">Blog</a>
+      <a href="../games.html" class="active">Games</a>
+      <button id="theme-toggle" aria-label="Toggle theme">☀️</button>
+    </div>
+  </nav>
+
+  <div class="game-page">
+    <a href="../games.html" class="back-link">← back to games</a>
+    <h1>Breakout</h1>
+    <div class="canvas-wrapper">
+      <canvas id="canvas" width="480" height="480"></canvas>
+    </div>
+    <div class="game-controls">
+      <kbd>←</kbd> <kbd>→</kbd> or <kbd>Mouse</kbd> Move paddle &nbsp;|&nbsp; <kbd>R</kbd> Restart
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      var stored = localStorage.getItem('theme');
+      var dark = stored ? stored === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+      var btn = document.getElementById('theme-toggle');
+      btn.textContent = dark ? '☀️' : '🌙';
+      btn.addEventListener('click', function() {
+        var isDark = document.documentElement.dataset.theme === 'dark';
+        document.documentElement.dataset.theme = isDark ? 'light' : 'dark';
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+        btn.textContent = isDark ? '🌙' : '☀️';
+      });
+    })();
+  </script>
+
+  <script src="../build/breakout.js"></script>
+  <script>
+    createBreakout({
+      canvas: document.getElementById('canvas'),
+      locateFile: function(p) { return '../build/' + p; }
+    }).then(function() {
+      document.getElementById('canvas').focus();
+    });
+  </script>
+</body>
+</html>

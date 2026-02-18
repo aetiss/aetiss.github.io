@@ -1,0 +1,116 @@
+/* ─── Reset & Base ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #ffffff;
+  --fg:        #1a1a1a;
+  --muted:     #666;
+  --accent:    #d44000;
+  --nav-bg:    rgba(255,255,255,0.92);
+  --nav-border:#e5e5e5;
+  --card-bg:   #f5f5f5;
+  --radius:    6px;
+  --mono:      'Fira Mono', 'Cascadia Code', 'Courier New', monospace;
+}
+
+[data-theme="dark"] {
+  --bg:        #0e0e0e;
+  --fg:        #e8e8e8;
+  --muted:     #888;
+  --accent:    #ff6b35;
+  --nav-bg:    rgba(14,14,14,0.92);
+  --nav-border:#222;
+  --card-bg:   #151515;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:        #0e0e0e;
+    --fg:        #e8e8e8;
+    --muted:     #888;
+    --accent:    #ff6b35;
+    --nav-bg:    rgba(14,14,14,0.92);
+    --nav-border:#222;
+    --card-bg:   #151515;
+  }
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.6;
+  transition: background 0.2s, color 0.2s;
+  min-height: 100vh;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ─── Navigation ────────────────────────────────────────────── */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  height: 56px;
+  background: var(--nav-bg);
+  border-bottom: 1px solid var(--nav-border);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.nav-logo {
+  font-family: var(--mono);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--fg);
+  letter-spacing: 0.05em;
+  text-decoration: none;
+}
+.nav-logo:hover { color: var(--accent); text-decoration: none; }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.nav-links a:hover,
+.nav-links a.active { color: var(--fg); text-decoration: none; }
+
+#theme-toggle {
+  background: none;
+  border: 1px solid var(--nav-border);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.15s;
+  color: var(--fg);
+}
+#theme-toggle:hover { border-color: var(--accent); }
+
+/* ─── Utilities ─────────────────────────────────────────────── */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
